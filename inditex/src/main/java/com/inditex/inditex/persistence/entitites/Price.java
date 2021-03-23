@@ -2,9 +2,8 @@ package com.inditex.inditex.persistence.entitites;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @Table(name="prices")

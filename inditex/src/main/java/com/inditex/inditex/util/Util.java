@@ -1,7 +1,6 @@
 package com.inditex.inditex.util;
 
 import java.io.File;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -37,7 +36,10 @@ public class Util {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         return date;
     }
+
+
 
 }

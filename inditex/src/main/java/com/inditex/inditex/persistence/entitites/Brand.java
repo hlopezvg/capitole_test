@@ -1,12 +1,8 @@
 package com.inditex.inditex.persistence.entitites;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -19,7 +15,7 @@ public class Brand implements Serializable {
     private String brandName;
 
     @OneToMany(mappedBy = "brand")
-    private List<Price> prices;
+    private Set<Price> prices;
 
     public Brand(){}
 
@@ -44,12 +40,4 @@ public class Brand implements Serializable {
         this.brandName = brandName;
     }
 
-
-    public List<Price> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
-    }
 }

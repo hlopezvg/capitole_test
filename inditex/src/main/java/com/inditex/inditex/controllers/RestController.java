@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -27,11 +28,12 @@ public class RestController {
     }
 
 
-    @GetMapping(value = "/prices/{dateQuery}/{productId}/{brandId}",
+    @GetMapping(value = {"/prices/{dateQuery}",
+            "/prices/{dateQuery}/{productId}", "/prices/{dateQuery}/{productId}/{brandId}"},
             produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Price> getPrice(@PathVariable String dateQuery,
-                         @PathVariable String productId,
-                         @PathVariable Long brandId) {
+    List<Price> getPrice(@PathVariable("dateQuery") String dateQuery,
+                         @PathVariable("productId") String productId,
+                         @PathVariable("brandId") Long brandId) {
         List<Price> price = priceService.findPriceByProductId(Util.convertStringtoDate(dateQuery), productId, brandId);
         return price;
     }

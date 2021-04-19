@@ -40,6 +40,38 @@ public class Util {
         return date;
     }
 
+    public static Date convertToDate(String receivedDate) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH.mm.ss");
+        Date date = null;
+        try {
+            date = formatter.parse(receivedDate);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return date;
+    }
 
 
+    public static boolean calculateDateSameDay(Date queryDate, Date initDate, Date endDate){
+        //It wont work for time zone, we could pass the timezone/ No funciona para varias zonas horarias
+        //Para esa caso, usar LocalDate y llevar el date a instant
+        Calendar cal = Calendar.getInstance();
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal.setTime(queryDate);
+        cal1.setTime(initDate);
+        cal2.setTime(endDate);
+
+        boolean sameDayAndValidRangeHour =
+                        cal.get(Calendar.DAY_OF_YEAR) ==  cal1.get(Calendar.DAY_OF_YEAR) &&
+                        cal.get(Calendar.DAY_OF_YEAR) ==  cal2.get(Calendar.DAY_OF_YEAR) &&
+                        cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) &&
+                        cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                        //Validate Hour
+                        cal.get(Calendar.HOUR_OF_DAY) >= cal1.get(Calendar.HOUR_OF_DAY) &&
+                        cal.get(Calendar.HOUR_OF_DAY) <= cal2.get(Calendar.HOUR_OF_DAY);
+
+
+        return sameDayAndValidRangeHour;
+    }
 }

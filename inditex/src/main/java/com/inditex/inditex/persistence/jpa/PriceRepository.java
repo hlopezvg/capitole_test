@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface PriceRepository extends JpaRepository<Price, Long> {
     @Query("SELECT p, b FROM Price p JOIN  p.brand b WHERE b.Id= :brandId and p.productId= :productId " +
-            " and p.startDate = :dateQuery or  p.endDate = :dateQuery")
+            " and p.endDate >= :dateQuery")
     List<Price> findPriceByProductId(@Param("dateQuery") Date dateQuery,
                                      @Param("productId") String productId,
                                      @Param("brandId") Long brandId);

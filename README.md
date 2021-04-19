@@ -30,7 +30,9 @@ curl -v -X GET localhost:8080/api/prices/2020-06-16-11.00.00/35455/1 | json_pp
 ```
 
 ### Important gradle commands / Commandos de gradle importantes para ser usados
+```
 ./gradlew bootRun
 ./gradlew test
 ./gradlew bootRun
 ./gradlew build --refresh-dependencies
+```
